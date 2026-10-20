@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Owner Dashboard | Maheshwari Chocollate House</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/admin.js"></script>
+</head>
+<body class="admin-body">
+  <header class="admin-header"><a class="brand" href="./"><span class="brand-mark">MC</span><span><strong>MAHESHWARI CHOCOLLATE HOUSE</strong><small>PRODUCT MANAGEMENT</small></span></a><a href="./">View storefront ↗</a></header>
+  <main class="admin-main">
+    <section id="login-panel" class="admin-panel login-panel">
+      <p class="eyebrow">PRIVATE AREA</p><h1>Welcome <em>back.</em></h1>
+      <p class="muted">Sign in to manage the Maheshwari Chocollate House collection.</p>
+      <form id="login-form" class="admin-form">
+        <label>Email address<input type="email" id="email" autocomplete="username" required></label>
+        <label>Password<input type="password" id="password" autocomplete="current-password" required minlength="8"></label>
+        <button class="button button-dark" type="submit">Sign in securely</button>
+      </form>
+      <p id="login-message" class="form-message" aria-live="polite"></p>
+    </section>
+
+    <section id="dashboard-panel" hidden>
+      <div class="dashboard-heading"><div><p class="eyebrow">YOUR CATALOGUE</p><h1>Product <em>studio.</em></h1></div><button id="sign-out" class="button button-outline" type="button">Sign out</button></div>
+      <section class="admin-panel settings-panel">
+        <div class="list-heading"><div><p class="eyebrow">YOUR STOREFRONT</p><h2>Store settings</h2></div></div>
+        <p class="muted">These details appear on the public website and WhatsApp order messages.</p>
+        <form id="settings-form" class="admin-form settings-form">
+          <div class="form-row">
+            <label>Business name<input id="setting-brand-name" maxlength="100" required></label>
+            <label>WhatsApp number<input id="setting-whatsapp" inputmode="numeric" maxlength="15" placeholder="Country code + number, digits only"></label>
+          </div>
+          <label>Announcement bar<input id="setting-announcement" maxlength="140" placeholder="A short message at the top of your site"></label>
+          <label>Homepage headline<input id="setting-hero-title" maxlength="100" placeholder="A short welcome headline"></label>
+          <label>Homepage introduction<textarea id="setting-hero-description" rows="2" maxlength="300"></textarea></label>
+          <label>About your business<textarea id="setting-story" rows="3" maxlength="600"></textarea></label>
+          <div class="form-row">
+            <label>Instagram profile URL<input id="setting-instagram" type="url" maxlength="250" placeholder="https://www.instagram.com/..."></label>
+            <label>Delivery / availability note<input id="setting-delivery" maxlength="180" placeholder="Delivery details are confirmed on WhatsApp"></label>
+          </div>
+          <div><button class="button button-dark" type="submit">Save store settings</button><p id="settings-message" class="form-message" aria-live="polite"></p></div>
+        </form>
+      </section>
+      <div class="admin-columns">
+        <section class="admin-panel">
+          <h2 id="form-title">Add a product</h2>
+          <form id="product-form" class="admin-form">
+            <input type="hidden" id="product-id">
+            <label>Product name<input id="name" maxlength="100" required></label>
+            <label>Description<textarea id="description" rows="3" maxlength="1000"></textarea></label>
+            <div class="form-row">
+              <label>Price (₹)<input id="price" type="number" min="0" max="1000000" step="0.01" required></label>
+              <label>Weight / size<input id="weight" maxlength="50" placeholder="e.g. 200 g"></label>
+            </div>
+            <div class="form-row">
+              <label>Category<input id="category" maxlength="60" placeholder="Gift boxes"></label>
+              <label>Sort order<input id="sort-order" type="number" min="0" max="10000" value="100"></label>
+            </div>
+            <label>Availability<select id="stock-status"><option value="available">Available to order</option><option value="seasonal">Seasonal</option><option value="sold_out">Sold out</option></select><span class="field-hint">Sold out products stay visible, but customers cannot add them to their cart.</span></label>
+            <label>Options / sizes <span class="field-hint">One per line: Option name | price | size. Example: Box of 6 | 350 | 6 pieces</span><textarea id="variants" rows="3" maxlength="1500" placeholder="Box of 6 | 350 | 6 pieces&#10;Box of 12 | 650 | 12 pieces"></textarea></label>
+            <label>Product photos<input id="image" type="file" accept="image/jpeg,image/png,image/webp" multiple><span class="field-hint">Add up to 5 photos. The first one will be the cover photo. JPG, PNG or WebP, up to 5 MB each.</span></label>
+            <p id="image-selection-note" class="field-hint image-selection-note" aria-live="polite"></p>
+            <div id="gallery-editor" class="gallery-editor" aria-live="polite"></div>
+            <label class="check-label"><input id="is-featured" type="checkbox"> Feature this product on the homepage</label>
+            <label class="check-label"><input id="is-active" type="checkbox" checked> Visible on the public website</label>
+            <div class="form-row"><button class="button button-dark" type="submit">Save product</button><button id="cancel-edit" class="button button-outline" type="button">Clear form</button></div>
+          </form>
+          <p id="form-message" class="form-message" aria-live="polite"></p>
+        </section>
+        <section class="admin-panel">
+          <div class="list-heading"><h2>Products</h2><button id="refresh-products" class="text-button" type="button">Refresh ↻</button></div>
+          <div id="admin-product-list" class="admin-product-list"><p class="muted">Sign in to load products.</p></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>OWNER STUDIO</span><span>Keep your sign-in details private.</span></footer>
+</body>
+</html>
+

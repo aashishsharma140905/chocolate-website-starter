@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#24130f">
+  <meta name="description" content="Homemade chocolates, fresh and delicious, for birthdays, anniversaries, return gifts and custom orders from Maheshwari Chocollate House.">
+  <title>Maheshwari Chocollate House | Homemade with love</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="importmap">
+    {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js"}}
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/config.js"></script>
+  <script defer src="js/store.js"></script>
+  <script type="module" src="js/hero-3d.js"></script>
+</head>
+<body>
+  <div id="announcement-text" class="announcement">Homemade chocolate · Made with love · Custom orders</div>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Maheshwari Chocollate House home">
+      <span class="brand-mark">MC</span>
+      <span><strong id="brand-name">MAHESHWARI CHOCOLLATE HOUSE</strong><small>HOMEMADE WITH LOVE</small></span>
+    </a>
+    <nav><a href="#collection">Shop</a><a href="#story">Our story</a><button class="cart-trigger" id="cart-open" type="button" aria-label="Open shopping cart"><span class="cart-bag-icon" aria-hidden="true">▢</span> Cart <span id="cart-count" class="cart-count">0</span></button></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">HOMEMADE · FRESH · DELICIOUS</p>
+        <h1 id="hero-title">Small bites. Big happiness.</h1>
+        <p id="hero-description" class="hero-description">Homemade chocolates made with love for birthdays, anniversaries, return gifts and the moments worth celebrating.</p>
+        <a class="button button-gold" href="#collection">Explore the collection <span>↓</span></a>
+      </div>
+      <div class="hero-art" role="img" aria-label="Chocolate assortment illustration">
+        <canvas id="hero-3d-canvas" aria-hidden="true"></canvas>
+        <div class="hero-orbit"></div><div class="hero-disc"></div>
+        <div class="choc choc-one"></div><div class="choc choc-two"></div><div class="choc choc-three"></div>
+        <div class="hero-caption">MADE WITH LOVE<br><span>FOR EVERY CELEBRATION</span></div>
+      </div>
+    </section>
+
+    <section class="shop-promises" aria-label="About our chocolate shop">
+      <div><span class="promise-icon" aria-hidden="true">✦</span><span><strong>Homemade with love</strong><small>Fresh, delicious chocolate</small></span></div>
+      <div><span class="promise-icon" aria-hidden="true">♡</span><span><strong>Made for gifting</strong><small>Birthdays · anniversaries · return gifts</small></span></div>
+      <div><span class="promise-icon" aria-hidden="true">✧</span><span><strong>Custom orders</strong><small>Tell us what you’re celebrating</small></span></div>
+      <div><span class="promise-icon" aria-hidden="true">↗</span><span><strong>Order on WhatsApp</strong><small>Confirm your order directly</small></span></div>
+    </section>
+
+    <section id="featured-selection" class="featured-selection section-wrap" hidden aria-labelledby="featured-title">
+      <div class="section-heading"><div><p class="eyebrow">A LITTLE SOMETHING SPECIAL</p><h2 id="featured-title">Handpicked <em>for you.</em></h2></div><p class="muted">A few picks from our collection.</p></div>
+      <div id="featured-grid" class="product-grid featured-grid"></div>
+    </section>
+
+    <section class="collection section-wrap" id="collection">
+      <p class="collection-breadcrumb"><a href="./">Home</a><span>/</span><span>Shop chocolates</span></p>
+      <div class="section-heading">
+        <div><p class="eyebrow">THE MAHESHWARI COLLECTION</p><h2>Find your <em>favourite.</em></h2></div>
+        <p class="muted">Thoughtful treats for little and big celebrations.</p>
+      </div>
+      <div class="collection-tools">
+        <label class="catalog-search" for="product-search"><span aria-hidden="true">⌕</span><input id="product-search" type="search" placeholder="Search chocolates and gifts" autocomplete="off"><kbd>/</kbd></label>
+        <label class="catalog-sort" for="product-sort">Sort by<select id="product-sort"><option value="featured">Featured</option><option value="name">Name: A to Z</option><option value="price-low">Price: Low to high</option><option value="price-high">Price: High to low</option></select></label>
+      </div>
+      <div class="catalog-refine" aria-label="More product filters">
+        <label class="available-filter"><input id="available-only" type="checkbox"> Hide sold-out products</label>
+        <div class="price-range"><span>Price</span><label><span class="sr-only">Minimum price</span><input id="price-min" type="number" min="0" step="1" inputmode="numeric" placeholder="Min ₹"></label><span>to</span><label><span class="sr-only">Maximum price</span><input id="price-max" type="number" min="0" step="1" inputmode="numeric" placeholder="Max ₹"></label></div>
+        <button id="clear-filters" class="clear-filters" type="button" hidden>Clear filters</button>
+      </div>
+      <div id="category-filters" class="filters" aria-label="Filter products"></div>
+      <div id="product-grid" class="product-grid"><p class="muted">Loading the collection…</p></div>
+      <p id="catalog-results" class="catalog-results" aria-live="polite"></p>
+      <p id="store-message" class="muted store-message" aria-live="polite"></p>
+    </section>
+
+    <section class="story" id="story">
+      <p class="eyebrow">A NOTE FROM MAHESHWARI</p>
+      <h2>Fresh. Delicious.<br><em>Made with love.</em></h2>
+      <p id="story-copy">Celebrate birthdays and anniversaries, share return gifts, or ask about a custom order. Send us a message to discuss your occasion.</p>
+      <a class="text-link" id="story-whatsapp" href="#" target="_blank" rel="noopener">Ask about a custom order on WhatsApp ↗</a>
+      <p><a id="instagram-link" class="text-link" href="https://www.instagram.com/maheshwari_chocollates/" target="_blank" rel="noopener noreferrer">See us on Instagram ↗</a></p>
+    </section>
+  </main>
+  <footer class="site-footer"><span id="footer-brand">MAHESHWARI CHOCOLLATE HOUSE</span><span>Homemade with love.</span><a href="admin.html">Owner login</a></footer>
+
+  <div id="product-dialog" class="overlay" hidden>
+    <button class="overlay-scrim" type="button" data-close-product aria-label="Close product details"></button>
+    <section class="product-dialog-panel" role="dialog" aria-modal="true" aria-labelledby="dialog-name" tabindex="-1">
+      <button class="dialog-close" type="button" data-close-product aria-label="Close">×</button>
+      <div class="dialog-visual-column"><div id="dialog-image" class="dialog-image"></div><div id="dialog-gallery-thumbs" class="dialog-gallery-thumbs" aria-label="More product photos"></div></div>
+      <div class="dialog-copy">
+        <p id="dialog-category" class="eyebrow"></p>
+        <h2 id="dialog-name"></h2>
+        <p id="dialog-description" class="dialog-description"></p>
+        <p id="dialog-stock-status" class="dialog-stock-status"></p>
+        <p id="dialog-weight" class="dialog-weight"></p>
+        <label id="variant-select-wrap" class="variant-select-wrap" for="dialog-variant" hidden>Choose an option<select id="dialog-variant"></select></label>
+        <strong id="dialog-price" class="dialog-price"></strong>
+        <div class="dialog-actions">
+          <div class="quantity-control" aria-label="Quantity">
+            <button type="button" data-detail-qty="minus" aria-label="Decrease quantity">−</button>
+            <output id="detail-quantity" aria-live="polite">1</output>
+            <button type="button" data-detail-qty="plus" aria-label="Increase quantity">+</button>
+          </div>
+          <button id="detail-add" class="button button-dark" type="button">Add to cart</button>
+        </div>
+        <p class="dialog-note">Availability and delivery details are confirmed with you on WhatsApp.</p>
+      </div>
+    </section>
+  </div>
+
+  <div id="cart-overlay" class="cart-overlay" hidden>
+    <button class="cart-scrim" type="button" data-close-cart aria-label="Close cart"></button>
+    <aside class="cart-panel" role="dialog" aria-modal="true" aria-labelledby="cart-title" tabindex="-1">
+      <div class="cart-heading"><div><p class="eyebrow">YOUR SELECTION</p><h2 id="cart-title">Your cart</h2></div><button class="dialog-close" type="button" data-close-cart aria-label="Close cart">×</button></div>
+      <div id="cart-items" class="cart-items"></div>
+      <div class="cart-footer">
+        <div class="cart-total"><span>Estimated item total</span><strong id="cart-total"></strong></div>
+        <div class="checkout-details">
+          <label for="order-customer-name">Your name<input id="order-customer-name" maxlength="100" autocomplete="name" placeholder="Name for the order" required></label>
+          <div class="form-row">
+            <label for="order-fulfilment">Order type<select id="order-fulfilment"><option value="Delivery">Delivery</option><option value="Pickup">Pickup</option></select></label>
+            <label for="order-date">Preferred date<input id="order-date" type="date"></label>
+          </div>
+        </div>
+        <label class="order-note-label" for="order-note">Occasion or order note <span>(optional)</span></label>
+        <textarea id="order-note" maxlength="500" placeholder="For example: birthday gift, message card, or preferred date"></textarea>
+        <p id="cart-note" class="cart-note">Delivery charges and final availability are confirmed on WhatsApp.</p>
+        <section class="checkout-summary" aria-label="Order summary" aria-live="polite"><div><p class="eyebrow">ORDER SUMMARY</p><strong id="summary-customer">Your order</strong><span id="summary-order-meta">0 items · Delivery</span></div><strong id="summary-total"></strong></section>
+        <a id="checkout-whatsapp" class="button button-dark checkout-button" href="#" target="_blank" rel="noopener noreferrer">Continue to WhatsApp</a>
+        <p id="checkout-hint" class="checkout-hint" aria-live="polite">Add your name to prepare the order message.</p>
+        <button id="continue-shopping" class="continue-shopping" type="button">Continue shopping</button>
+      </div>
+    </aside>
+  </div>
+  <div id="store-toast" class="store-toast" role="status" aria-live="polite"></div>
+  <button id="mobile-cart-bar" class="mobile-cart-bar" type="button" hidden><span>View your cart</span><strong id="mobile-cart-count">0 items</strong><b id="mobile-cart-total"></b></button>
+</body>
+</html>
