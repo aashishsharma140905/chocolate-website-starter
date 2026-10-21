@@ -27,7 +27,7 @@ $$;
 
 create table if not exists public.store_settings (
   singleton boolean primary key default true check (singleton),
-  brand_name text not null default 'Maheshwari Chocollate House' check (char_length(brand_name) between 1 and 100),
+  brand_name text not null default 'Maheshwari Chocollates' check (char_length(brand_name) between 1 and 100),
   announcement text not null default 'Homemade chocolate · Made with love · Custom orders' check (char_length(announcement) <= 140),
   hero_title text not null default 'Small bites. Big happiness.' check (char_length(hero_title) <= 100),
   hero_description text not null default 'Homemade chocolates made with love for birthdays, anniversaries, return gifts and the moments worth celebrating.' check (char_length(hero_description) <= 300),

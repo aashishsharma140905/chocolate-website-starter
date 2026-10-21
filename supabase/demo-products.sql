@@ -1,4 +1,4 @@
--- Demo catalog for Maheshwari Chocollate House.
+-- Demo catalog for Maheshwari Chocollates.
 -- Run in Supabase SQL Editor after supabase/schema.sql has been applied.
 -- Product names are based on items visibly featured on the public Instagram profile.
 -- Prices below are illustrative demo values, not prices stated by the business.

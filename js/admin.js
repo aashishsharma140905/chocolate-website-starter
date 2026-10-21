@@ -5,6 +5,10 @@
   const loginMessage = $("#login-message"), formMessage = $("#form-message"), settingsMessage = $("#settings-message");
   const form = $("#product-form"), settingsForm = $("#settings-form");
   const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const normalizeBrandName = value => {
+    const name = String(value ?? "").trim();
+    return /^maheshwari\s+chocollates?\s+house$/i.test(name) ? "Maheshwari Chocollates" : name || cfg.brandName;
+  };
   const money = value => new Intl.NumberFormat("en-IN", {style:"currency",currency:cfg.currency,maximumFractionDigits:2}).format(Number(value));
   const defaultSettings = {
     brand_name: cfg.brandName,
@@ -32,7 +36,7 @@
   }
   function fillSettings(settings = {}) {
     const values = {...defaultSettings, ...(settings || {})};
-    $("#setting-brand-name").value = values.brand_name || defaultSettings.brand_name;
+    $("#setting-brand-name").value = normalizeBrandName(values.brand_name || defaultSettings.brand_name);
     $("#setting-whatsapp").value = values.whatsapp_number || "";
     $("#setting-announcement").value = values.announcement || "";
     $("#setting-hero-title").value = values.hero_title || "";

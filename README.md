@@ -1,4 +1,4 @@
-# Maheshwari Chocollate House Website
+# Maheshwari Chocollates Website
 
 Static product storefront + single-owner admin panel. HTML/CSS/JavaScript + Supabase + Cloudflare Pages.
 
@@ -39,7 +39,7 @@ The storefront copy reflects the public Instagram profile: homemade chocolates m
 Edit `js/config.js`:
 - `supabaseUrl`: your project URL
 - `supabaseAnonKey`: publishable/anon key only
-- `brandName`: Maheshwari Chocollate House (update if the preferred spelling differs)
+- `brandName`: Maheshwari Chocollates
 - `whatsappNumber`: business WhatsApp country code + number, digits only (India starts with 91); ordering links stay disabled until a valid number is entered
 - `storageBucket`: `product-images`
 

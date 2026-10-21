@@ -6,7 +6,7 @@
 window.CHOCOLATE_CONFIG = {
   supabaseUrl: "https://rsfyqeexbzovlabppgiu.supabase.co",
   supabaseAnonKey: "sb_publishable_u2XM2eriC-kIjaWqiLjfZA_VNwT-52x",
-  brandName: "Maheshwari Chocollate House",
+  brandName: "Maheshwari Chocollates",
   // Add the WhatsApp number with country code, digits only (India: 91XXXXXXXXXX).
   whatsappNumber: "916303693921",
   instagramUrl: "https://www.instagram.com/maheshwari_chocollates/",

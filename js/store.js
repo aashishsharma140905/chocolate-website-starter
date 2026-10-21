@@ -40,6 +40,10 @@
   const esc = value => String(value ?? "").replace(/[&<>"']/g, c => ({
     "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
   }[c]));
+  const normalizeBrandName = value => {
+    const name = String(value ?? "").trim();
+    return /^maheshwari\s+chocollates?\s+house$/i.test(name) ? "Maheshwari Chocollates" : name || cfg.brandName;
+  };
   const hasWhatsApp = () => /^\d{10,15}$/.test(whatsappNumber);
   const waLink = text => hasWhatsApp() ? `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}` : "#";
   const variantsFor = product => Array.isArray(product.variants) ? product.variants.filter(v => v && v.name && Number.isFinite(Number(v.price))) : [];
@@ -68,7 +72,7 @@
   }
   function applySettings(next) {
     settings = {...defaults, ...(next || {})};
-    brandName = settings.brand_name || defaults.brand_name;
+    brandName = normalizeBrandName(settings.brand_name || defaults.brand_name);
     whatsappNumber = settings.whatsapp_number || "";
     deliveryNote = settings.delivery_note || defaults.delivery_note;
     $("#brand-name").textContent = brandName.toUpperCase();
